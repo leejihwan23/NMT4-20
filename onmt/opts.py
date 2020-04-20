@@ -233,18 +233,18 @@ def preprocess_opts(parser):
               help="Type of the source input. "
                    "Options are [text|img|audio|vec].")
 
-    group.add('--train_src', '-train_src', default=["C:/Users/pc/Desktop/opennmt-jh/data/src-train.txt"], nargs='+', #required=True
+    group.add('--train_src', '-train_src', default=["/home/team012/LJH/NMT4-20/data/src-train.txt"], nargs='+', #required=True
               help="Path(s) to the training source data")
-    group.add('--train_tgt', '-train_tgt', default=["C:/Users/pc/Desktop/opennmt-jh/data/tgt-train.txt"],  nargs='+', #required=True,
+    group.add('--train_tgt', '-train_tgt', default=["/home/team012/LJH/NMT4-20/data/tgt-train.txt"],  nargs='+', #required=True,
               help="Path(s) to the training target data")
     group.add('--train_align', '-train_align', nargs='+', default=[None],
               help="Path(s) to the training src-tgt alignment")
     group.add('--train_ids', '-train_ids', nargs='+', default=[None],
               help="ids to name training shards, used for corpus weighting")
 
-    group.add('--valid_src', '-valid_src', default="C:/Users/pc/Desktop/opennmt-jh/data/src-val.txt",
+    group.add('--valid_src', '-valid_src', default="/home/team012/LJH/NMT4-20/data//src-val.txt",
               help="Path to the validation source data")
-    group.add('--valid_tgt', '-valid_tgt', default="C:/Users/pc/Desktop/opennmt-jh/data/tgt-val.txt",
+    group.add('--valid_tgt', '-valid_tgt', default="/home/team012/LJH/NMT4-20/data/tgt-val.txt",
               help="Path to the validation target data")
     group.add('--valid_align', '-valid_align', default=None,
               help="Path(s) to the validation src-tgt alignment")
@@ -252,7 +252,7 @@ def preprocess_opts(parser):
     group.add('--src_dir', '-src_dir', default="",
               help="Source directory for image or audio files.")
 
-    group.add('--save_data', '-save_data', default="C:/Users/pc/Desktop/opennmt-jh/data/demo",# required=True,
+    group.add('--save_data', '-save_data', default="/home/team012/LJH/NMT4-20/data/demo",# required=True,
               help="Output file for the prepared data")
 
     group.add('--max_shard_size', '-max_shard_size', type=int, default=0,
@@ -393,7 +393,7 @@ def train_opts(parser):
     """ Training and saving options """
 
     group = parser.add_argument_group('General')
-    group.add('--data', '-data', default="C:/Users/pc/Desktop/opennmt-jh/data/demo",#required=True,
+    group.add('--data', '-data', default="/home/team012/LJH/NMT4-20/data/demo",#required=True,
               help='Path prefix to the ".train.pt" and '
                    '".valid.pt" file path from preprocess.py')
 
@@ -405,7 +405,7 @@ def train_opts(parser):
     group.add('--data_to_noise', '-data_to_noise', nargs='+', default=[],
               help="IDs of datasets on which to apply noise.")
 
-    group.add('--save_model', '-save_model', default='C:/Users/pc/Desktop/opennmt-jh/data/model/model',
+    group.add('--save_model', '-save_model', default='/home/team012/LJH/NMT4-20/data/model/model',
               help="Model filename (the model will be saved as "
                    "<save_model>_N.pt where N is the number "
                    "of steps")
@@ -648,7 +648,7 @@ def translate_opts(parser):
     """ Translation / inference options """
     group = parser.add_argument_group('Model')
     group.add('--model', '-model', dest='models', metavar='MODEL',
-              nargs='+', type=str, default=['C:/Users/pc/Desktop/opennmt-jh/data/model/model_step_100.pt'], #required=True,
+              nargs='+', type=str, default=['/home/team012/LJH/NMT4-20/data/model/model_step_100.pt'], #required=True,
               help="Path to model .pt file(s). "
                    "Multiple models can be specified, "
                    "for ensemble decoding.")
@@ -667,7 +667,7 @@ def translate_opts(parser):
     group.add('--data_type', '-data_type', default="text",
               help="Type of the source input. Options: [text|img].")
 
-    group.add('--src', '-src', default='C:/Users/pc/Desktop/opennmt-jh/data/src-test.txt', #required=True,
+    group.add('--src', '-src', default='/home/team012/LJH/NMT4-20/data/src-test.txt', #required=True,
               help="Source sequence to decode (one line per "
                    "sequence)")
     group.add('--src_dir', '-src_dir', default="",
